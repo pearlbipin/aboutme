@@ -100,10 +100,10 @@ body {
 
 /* --- MAIN CONTENT --- */
 .content {
-    margin-left: 320px; /* Push content to right of sidebar */
+    margin-left: 320px;
     padding: 70px 90px;
-    width: 100%;
-    max-width: 1400px;
+    max-width: calc(1400px - 320px);
+    width: calc(100% - 320px);
 }
 
 section { margin-bottom: 90px; }
