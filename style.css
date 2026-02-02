@@ -27,6 +27,11 @@ body {
     line-height: 1.6;
 }
 
+body {
+    overflow-x: hidden;
+}
+
+
 /* --- LAYOUT: Sidebar + Content --- */
 .layout {
     display: flex;
