@@ -60,3 +60,41 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 });
+
+
+// 4. Contact Email Reveal & Copy Logic
+    const contactBtn = document.getElementById('contactBtn');
+    const feedback = document.getElementById('copyFeedback');
+
+    if (contactBtn) {
+        contactBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Stop it from jumping to top or opening mail immediately
+            
+            const email = contactBtn.getAttribute('data-email');
+            const btnText = contactBtn.querySelector('.btn-text');
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(email).then(() => {
+                // Change button look
+                contactBtn.classList.add('revealed');
+                btnText.textContent = email;
+                
+                // Show "Copied" feedback
+                feedback.classList.add('visible');
+                
+                // Reset feedback message after 2 seconds
+                setTimeout(() => {
+                    feedback.classList.remove('visible');
+                }, 2000);
+
+                // Optional: Change href to mailto after reveal, 
+                // so a second click opens the email app
+                contactBtn.href = `mailto:${email}`;
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                // Fallback if clipboard fails
+                contactBtn.href = `mailto:${email}`;
+                window.location.href = `mailto:${email}`;
+            });
+        });
+    }
