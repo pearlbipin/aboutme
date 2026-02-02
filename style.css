@@ -208,6 +208,47 @@ p.lead {
     text-align: center;
 }
 
+
+
+/* --- CONTACT REVEAL ANIMATION --- */
+.email-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.contact-reveal {
+    min-width: 180px; /* Prevents layout jump when text changes */
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* Prepare for border transition */
+}
+
+/* The 'Revealed' State */
+.contact-reveal.revealed {
+    background-color: transparent;
+    color: var(--accent);
+    border-color: var(--accent);
+    cursor: copy; /* Shows the user they can copy it */
+}
+
+.copy-feedback {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    height: 1.5rem; /* Reserve space */
+}
+
+.copy-feedback.visible {
+    opacity: 1;
+    transform: translateY(0);
+    color: #10b981; /* A nice success green */
+}
+
 /* --- BUTTONS --- */
 .button {
     display: inline-block;
