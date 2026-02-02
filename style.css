@@ -100,7 +100,7 @@ img {
 .main-nav {
     margin-top: 1.5rem;
     display: flex;
-    gap: 1.5rem;
+    gap: clamp(0.5rem, 2vw, 1.5rem);
     flex-wrap: wrap;
     justify-content: center;
 }
