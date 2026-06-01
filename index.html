@@ -1,172 +1,2178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="0UOQqMDHBpx-rF2Gh-hz-UKjKzomz88x-xeDve5T2i8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pearl Bipin Pulickal | Engineer & Mathematician</title>
-
-    <link rel="icon" href="images/pearlbipin.jpg" type="image/jpeg">
-    <link rel="apple-touch-icon" href="images/pearlbipin.jpg">
-
-    <meta name="description" content="Academic portfolio of Pearl Bipin Pulickal. Electronics Engineer (NIT Goa), Mathematics Researcher, and Consultant.">
-    <meta name="keywords" content="Pearl Bipin Pulickal, NIT Goa, Whitebox AI, Category Theory, Mathematics, Pearl Bipin">
-    <meta name="author" content="Pearl Bipin Pulickal">
+    <meta name="description" content="Pearl Bipin Pulickal - Engineer, Mathematician, Researcher.">
+    <meta name="theme-color" content="#050505">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Pearl B. Pulickal | Research & Engineering</title>
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/OSQNB.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&amp;display=swap" rel="stylesheet">
     
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Pearl Bipin Pulickal",
-      "alternateName": ["Pearl Bipin", "PB Pulickal", "Bipin Pulickal"],
+      "alternateName": ["Pearl Bipin", "Bipin Pulickal"],
       "alumniOf": "National Institute of Technology Goa",
-      "jobTitle": "Researcher",
-      "url": "https://pearlbipin.github.io/aboutme/",
-      "image": "https://pearlbipin.github.io/aboutme/images/pearlbipin.jpg"
+      "jobTitle": "Researcher & Electronics Engineer",
+      "url": "https://pearlbipinpulickal.neocities.org/",
+      "image": "https://pearlbipinpulickal.neocities.org/images/pearl-bipin-pulickal-16.jpg"
     }
     </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* =========================================
+           1. ELITE RESET & VARIABLES
+           ========================================= */
+        :root {
+            --bg-deep: #050505;
+            --bg-panel: #0f0f0f;
+            --text-primary: #e6e6e6;
+            --text-secondary: #888888;
+            --gold-flat: #d4af37;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Manrope', sans-serif;
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; background-color: var(--bg-deep); }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background-color: var(--bg-deep);
+            overflow-x: hidden;
+            line-height: 1.7;
+            cursor: none; 
+        }
+
+        img { width: 100%; height: auto; display: block; }
+
+        /* Noise Overlay */
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 9000; opacity: 0.05;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bT1vY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==');
+        }
+        
+        /* Simulation Section Styling */
+        .sim-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 3rem; }
+        .sim-card { 
+            background: var(--bg-panel); border: 1px solid #222; padding: 3rem; 
+            border-radius: 8px; max-width: 600px; cursor: none; transition: border 0.3s;
+        }
+        .sim-card:hover { border-color: var(--gold-flat); }
+        .math-display { background: #000; padding: 1.5rem; border-radius: 4px; margin: 1.5rem 0; border-left: 3px solid var(--gold-flat); }
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 2rem; }
+        .stat-label { display: block; font-size: 0.7rem; text-transform: uppercase; color: var(--text-secondary); }
+        .stat-value { font-size: 1.5rem; font-weight: bold; }
+        .text-red { color: #ff3333; }
+        .text-gold { color: var(--gold-flat); }
+        
+        /* Modal Logic */
+        .sim-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 5, 5, 0.98); z-index: 10005;
+            display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease;
+        }
+        .sim-modal.active { display: flex; opacity: 1; }
+        .modal-content { width: 90%; max-width: 1000px; position: relative; }
+        .close-sim { 
+            position: absolute; top: -50px; right: 0; background: none; border: none; 
+            color: #fff; font-size: 2.5rem; cursor: pointer; 
+        }
+        .sim-btn {
+            background: transparent; color: var(--gold-flat); border: 1px solid var(--gold-flat);
+            padding: 0.8rem 2rem; margin-bottom: 1rem; cursor: pointer; text-transform: uppercase;
+            letter-spacing: 2px; transition: all 0.3s;
+        }
+        .sim-btn:hover { background: rgba(212, 175, 55, 0.1); }
+        #anomalyCanvas { background: #000; width: 100%; height: 500px; border: 1px solid #222; border-radius: 4px; }
+
+        /* Updated Cursor CSS */
+        .cursor-dot, .cursor-circle {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 12000; /* Move above all modals and loaders */
+            pointer-events: none;
+            transition: width 0.3s, height 0.3s, background-color 0.3s, opacity 0.3s;
+        }
+        
+        .cursor-dot { width: 4px; height: 4px; background: white; }
+        .cursor-circle {
+            width: 20px; height: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.8); /* Using your gold-flat variable */
+        }
+        
+        /* Hide the custom cursor when the mouse leaves the window */
+        body:not(:hover) .cursor-dot, 
+        body:not(:hover) .cursor-circle { opacity: 0; }
+
+        /* =========================================
+           3. PRELOADER
+           ========================================= */
+        .preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-deep); z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .preloader.hidden { opacity: 0; visibility: hidden; }
+        .loader-logo {
+            font-family: var(--font-display); font-size: 3rem; color: var(--gold-flat);
+            animation: pulseFade 2s infinite;
+        }
+
+        /* =========================================
+           4. NAVIGATION
+           ========================================= */
+        .navbar {
+            position: fixed; top: 0; width: 100%; padding: 2rem 3rem;
+            z-index: 1000; display: flex; justify-content: space-between; align-items: center;
+            mix-blend-mode: difference;
+        }
+        .brand { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: #fff; text-decoration: none; cursor: none;}
+        .nav-menu { display: flex; gap: 3rem; }
+        .nav-link {
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;
+            color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; cursor: none;
+        }
+        .nav-link:hover { color: var(--gold-flat); }
+
+        /* =========================================
+           5. HERO
+           ========================================= */
+        .hero {
+            position: relative; height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center; padding: 0 2rem;
+        }
+        #heroCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.4; }
+        .hero-content { position: relative; z-index: 2; }
+        .hero h1 {
+            font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem);
+            background: linear-gradient(to bottom, #ffffff 40%, #888888 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        .hero-desc { color: var(--gold-flat); letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; }
+
+        /* =========================================
+           6. MASONRY GALLERY
+           ========================================= */
+        .container { max-width: 1400px; margin: 0 auto; padding: 6rem 2rem; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-title { font-family: var(--font-display); font-size: 3rem; color: #fff; }
+        .section-tag { color: var(--gold-flat); text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 1rem; font-size: 0.8rem; }
+
+        .masonry {
+            column-count: 3; column-gap: 20px;
+        }
+        .item {
+            break-inside: avoid; margin-bottom: 20px; position: relative;
+            background: #111; overflow: hidden; border-radius: 4px;
+        }
+        .item img {
+            transition: transform 0.6s ease, opacity 0.3s; opacity: 0.9;
+        }
+        .item:hover img { transform: scale(1.05); opacity: 1; }
+        
+        /* Overlay Text for Grid Items */
+        .overlay-info {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            opacity: 0; transform: translateY(10px); transition: all 0.3s;
+        }
+        .item:hover .overlay-info { opacity: 1; transform: translateY(0); }
+        .overlay-title { color: #fff; font-family: var(--font-display); font-size: 1rem; }
+
+        /* =========================================
+           7. CONTACT & FOOTER
+           ========================================= */
+        .contact-wrapper { text-align: center; padding: 6rem 0; border-top: 1px solid #222; }
+        .cta-button {
+            display: inline-block; margin-top: 2rem; padding: 1rem 3rem;
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;
+            color: #fff; background: transparent; cursor: none;
+            text-transform: uppercase; letter-spacing: 2px; transition: all 0.3s;
+        }
+        .cta-button:hover { border-color: var(--gold-flat); background: rgba(212, 175, 55, 0.1); }
+        
+        footer { text-align: center; padding: 3rem; color: #444; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* =========================================
+           8. LIGHTBOX (FIXED FOR HORIZONTAL MODE)
+           ========================================= */
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 10001;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s;
+        }
+        .lightbox.active { opacity: 1; pointer-events: all; }
+        
+        /* CRITICAL FIX: object-fit: contain ensures aspect ratio is ALWAYS preserved */
+        .lightbox img { 
+            max-width: 90vw; 
+            max-height: 90vh; 
+            width: auto; 
+            height: auto;
+            object-fit: contain; 
+            border: 1px solid var(--gold-flat); 
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .masonry { column-count: 1; }
+            .nav-menu { display: none; }
+            .hero h1 { font-size: 3rem; }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .masonry { column-count: 2; }
+        }
+        
+        .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        @keyframes pulseFade { 0% { opacity: 0.5; } 100% { opacity: 1; } }
+    </style>
 </head>
 <body>
 
-    <div class="layout">
+    <div class="noise-overlay"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+
+    <div class="preloader">
+        <div class="loader-logo">PBP.</div>
+    </div>
+
+    <nav class="navbar">
+        <a href="#" class="brand hover-target">P.B. PULICKAL</a>
+        <div class="nav-menu">
+            <a href="#about" class="nav-link hover-target">Profile</a>
+            <a href="#research" class="nav-link hover-target">Life</a>
+            <a href="#origami" class="nav-link hover-target">Origami</a>
+            <a href="#consulting" class="nav-link hover-target" style="color: var(--gold-flat);">Consult</a>
+            <a href="#contact" class="nav-link hover-target">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <canvas id="heroCanvas"></canvas>
+        <div class="hero-content">
+            <h1>Pearl Bipin Pulickal</h1>
+            <div class="hero-desc">Engineer &bullet; Mathematician &bullet; Researcher</div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="container fade-up">
+            <div class="section-header">
+                <span class="section-tag">About Me</span>
+                <h2 class="section-title">Logic Meets Aesthetics</h2>
+                <p style="max-width: 600px; margin: 2rem auto; color: #aaa;">
+                    I research the intersection of <strong>Abstract Mathematics</strong> (Category Theory) and <strong>Engineering</strong> to build interpretable "Whitebox" AI systems. Based in Goa, India.
+                </p>
+                <img src="images/pearlbipin4.jpg" style="max-width: 600px; width: 100%; margin: 2rem auto; border-radius: 4px; opacity: 0.9;" alt="Pearl Portrait">
+            </div>
+        </section>
+
+        <section id="research" class="container fade-up">
+            <div class="section-header">
+                <span class="section-tag">Gallery</span>
+                <h2 class="section-title">Life & Research</h2>
+            </div>
+            
+            <div class="masonry">
+                <div class="item hover-target"><img src="images/new.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/pearl-bipin-pulickal-7.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Research Mode</div></div></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-20.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Professional Profile</div></div></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-25.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Official Portrait</div></div></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-26.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Research Focus</div></div></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-33.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Conference Ready</div></div></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-35.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Data Scientist</div></div></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-32.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Academic Profile</div></div></div>
+                <div class="item hover-target"><img src="images/pearl-bipin-pulickal-3.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Royal Enfield</div></div></div>
+                <div class="item hover-target"><img src="images/pearl-bipin-pulickal-4.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Honda SP125</div></div></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-21.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Networking</div></div></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-28.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Goa Diaries</div></div></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-31.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Lifestyle</div></div></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-43.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Nature</div></div></div>
+                <div class="item hover-target"><img src="images/pearl-bipin-pulickal-14.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/pearl-bipin-pulickal-1.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/pearl-bipin-pulickal-11.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/pearl-bipin-pulickal-5.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/pearl-bipin-pulickal-10.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-40.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-44.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-36.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-42.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Theology</div></div></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-22.jpg" loading="lazy"><div class="overlay-info"><div class="overlay-title">Planning</div></div></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-23.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-24.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-27.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-29.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-30.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-37.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-38.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Pearl-Bipin-Pulickal-39.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/pearl-bipin-pulickal-6.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/pearl-bipin-pulickal-2.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/pearl-bipin-pulickal-17.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/W1.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/W2.png" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/W3.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/W4.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/W5.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/W6.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/W7.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/W8.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/W9.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/W10.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Z1.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/Z2.jpg" loading="lazy"></div>
+            </div>
+        </section>
         
-        <aside class="sidebar">
-            <div class="sidebar-inner">
-                <div class="profile-header">
-                    <img src="images/pearlbipin.jpg" alt="Pearl Bipin Pulickal" class="avatar">
-                    <div class="profile-text">
-                        <h1>Pearl Bipin Pulickal</h1>
-                        <p class="tagline">Electronics Engineer &bullet; Mathematician &bullet; Researcher</p>
+        <section id="simulations" class="container fade-up">
+    <div class="section-header">
+        <span class="section-tag">The Lab</span>
+        <h2 class="section-title">Mathematics Simulations & Visualizations</h2>
+        <div class="divider"></div>
+    </div>
+    
+    
+
+
+
+
+
+
+<!-- 
+    =======================================================================
+    MODULE 1: PULICKAL TOPOLOGY COMPARATOR [ELITE 2D] 
+    VERSION: 3.0 (Zero-Lag $O(1)$ Queues / Retina Scaled)
+    =======================================================================
+-->
+<style>
+    :root {
+        --pl-bg: #050507;
+        --pl-panel: #0a0a0c;
+        --pl-border: #1a1a1e;
+        --pl-blue: #00f3ff;
+        --pl-gold: #d4af37;
+        --pl-text-main: #ffffff;
+        --pl-text-dim: #666666;
+    }
+
+    .pl-container {
+        background: var(--pl-bg);
+        border: 1px solid var(--pl-border);
+        padding: 2.5rem;
+        border-radius: 8px;
+        margin: 3rem 0;
+        font-family: 'Manrope', sans-serif;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .pl-hud-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        border-bottom: 1px solid var(--pl-border);
+        padding-bottom: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .pl-tag { font-size: 0.7rem; color: var(--pl-gold); letter-spacing: 4px; font-weight: 800; text-transform: uppercase; }
+    .pl-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--pl-text-main); margin: 8px 0 0 0; }
+    
+    .pl-badge {
+        font-family: monospace; font-size: 0.8rem; padding: 6px 14px;
+        border: 1px solid #333; color: var(--pl-text-dim);
+        background: rgba(0,0,0,0.5); transition: all 0.3s;
+    }
+    .pl-badge.running { border-color: var(--pl-gold); color: var(--pl-gold); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+
+    .pl-viewport {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+        height: 500px; margin-bottom: 2.5rem;
+    }
+
+    .pl-engine-pane {
+        position: relative; background: #000;
+        border: 1px solid #111; border-radius: 4px;
+        overflow: hidden; touch-action: none;
+    }
+
+    .pl-engine-pane canvas { width: 100%; height: 100%; display: block; }
+
+    .pl-overlay-info {
+        position: absolute; top: 20px; left: 20px;
+        z-index: 10; pointer-events: none;
+        background: linear-gradient(135deg, rgba(0,0,0,0.9), transparent);
+        padding: 10px 20px; border-radius: 4px;
+    }
+    .pl-overlay-info.right-align { left: auto; right: 20px; text-align: right; background: linear-gradient(225deg, rgba(0,0,0,0.9), transparent); }
+
+    .info-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .info-header h3 { font-size: 0.85rem; margin: 0; letter-spacing: 2px; color: #fff; text-transform: uppercase; }
+    
+    .color-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .color-dot.blue { background: var(--pl-blue); box-shadow: 0 0 10px var(--pl-blue); }
+    .color-dot.gold { background: var(--pl-gold); box-shadow: 0 0 10px var(--pl-gold); }
+
+    .info-meta { font-size: 0.65rem; color: #888; font-family: monospace; letter-spacing: 1px; margin-bottom: 5px; }
+    .info-stat { font-family: monospace; font-size: 1.4rem; color: #fff; font-weight: bold; }
+    .text-gold { color: var(--pl-gold) !important; }
+
+    .pl-controls {
+        background: var(--pl-panel); padding: 2rem;
+        border: 1px solid var(--pl-border); border-radius: 4px;
+    }
+
+    .pl-control-deck { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+
+    .pl-input-group { flex: 1; max-width: 400px; }
+    .pl-input-group label { display: block; font-size: 0.7rem; color: #888; letter-spacing: 2px; margin-bottom: 12px; font-weight: bold; }
+    
+    .range-wrapper { display: flex; align-items: center; gap: 15px; }
+    .range-icon { font-family: monospace; color: #555; font-weight: bold; }
+    
+    input[type=range] { 
+        flex: 1; cursor: pointer; height: 4px; 
+        background: #222; outline: none; -webkit-appearance: none; border-radius: 2px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%;
+        background: var(--pl-gold); transition: 0.2s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.3); }
+
+    .pl-btn-group { display: flex; gap: 20px; }
+    .pl-btn {
+        padding: 14px 28px; font-size: 0.75rem; font-weight: 800;
+        letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+        border: 1px solid #333; background: transparent; color: #aaa;
+    }
+    .pl-btn:hover { border-color: var(--pl-text-main); color: var(--pl-text-main); }
+    .pl-btn.solid { background: var(--pl-gold); border-color: var(--pl-gold); color: #000; }
+    .pl-btn.solid:hover { background: #ffea99; border-color: #ffea99; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); }
+
+    /* Mobile Adaptations */
+    @media (max-width: 900px) {
+        .pl-viewport { grid-template-columns: 1fr; height: auto; }
+        .pl-engine-pane { height: 350px; }
+        .pl-control-deck { flex-direction: column; align-items: stretch; gap: 25px; }
+        .pl-input-group { max-width: 100%; }
+        .pl-hud-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+        .pl-btn-group { flex-direction: column; }
+    }
+</style>
+
+<section id="pulickal-lab-root" class="pl-container">
+    <div class="pl-hud-header">
+        <div class="pl-brand">
+            <span class="pl-tag">Algorithmic Research Lab</span>
+            <h2 class="pl-title">TOPOLOGY RACE PROTOCOL</h2>
+        </div>
+        <div class="pl-badge" id="pl-system-status">SYSTEM STANDBY</div>
+    </div>
+
+    <div class="pl-viewport">
+        <div class="pl-engine-pane">
+            <div class="pl-overlay-info">
+                <div class="info-header"><span class="color-dot blue"></span><h3>LINEAR SCAN</h3></div>
+                <div class="info-meta">O(N²) TRAVERSAL</div>
+                <div class="info-stat"><span id="stat-linear">0</span></div>
+            </div>
+            <canvas id="canvas-linear"></canvas>
+        </div>
+
+        <div class="pl-engine-pane">
+            <div class="pl-overlay-info right-align">
+                <div class="info-header"><h3>PULICKAL PARALLEL</h3><span class="color-dot gold"></span></div>
+                <div class="info-meta">O(√N) CONVERGENCE</div>
+                <div class="info-stat"><span id="stat-parallel" class="text-gold">0</span></div>
+            </div>
+            <canvas id="canvas-parallel"></canvas>
+        </div>
+    </div>
+
+    <div class="pl-controls">
+        <div class="pl-control-deck">
+            <div class="pl-input-group">
+                <label>EXECUTION CLOCK (TPS)</label>
+                <div class="range-wrapper">
+                    <span class="range-icon">MIN</span>
+                    <input type="range" id="pl-speed" min="1" max="100" value="60">
+                    <span class="range-icon">MAX</span>
+                </div>
+            </div>
+            <div class="pl-btn-group">
+                <button id="btn-reset" class="pl-btn">RESTORE GRID</button>
+                <button id="btn-run" class="pl-btn solid">INITIATE SEQUENCE</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    const CFG = { SIZE: 60, C_BG: '#050507', C_LIN: '#00f3ff', C_PAR: '#d4af37', C_ACT: '#ffffff' };
+    
+    // O(1) Queue to eliminate Array.shift() lag
+    class FastQueue {
+        constructor() { this.data =[]; this.head = 0; }
+        push(item) { this.data.push(item); }
+        pop() { return this.head < this.data.length ? this.data[this.head++] : null; }
+        get length() { return this.data.length - this.head; }
+        clear() { this.data =[]; this.head = 0; }
+    }
+
+    const State = {
+        running: false, stepsPerFrame: 5,
+        lin: { grid: null, q: new FastQueue(), count: 0, done: false },
+        par: { grid: null, q: new FastQueue(), count: 0, done: false }
+    };
+
+    const DOM = {
+        canL: document.getElementById('canvas-linear'), canP: document.getElementById('canvas-parallel'),
+        ctxL: document.getElementById('canvas-linear').getContext('2d', {alpha: false}),
+        ctxP: document.getElementById('canvas-parallel').getContext('2d', {alpha: false}),
+        statL: document.getElementById('stat-linear'), statP: document.getElementById('stat-parallel'),
+        btnRun: document.getElementById('btn-run'), btnReset: document.getElementById('btn-reset'),
+        slider: document.getElementById('pl-speed'), status: document.getElementById('pl-system-status')
+    };
+
+    function init() {
+        window.addEventListener('resize', debounceResize);
+        DOM.btnRun.addEventListener('click', startSim);
+        DOM.btnReset.addEventListener('click', resetSim);
+        DOM.slider.addEventListener('input', (e) => { 
+            // Exponential scale for slider to feel more responsive
+            State.stepsPerFrame = Math.floor(Math.pow(e.target.value / 10, 2)) + 1; 
+        });
+        
+        State.stepsPerFrame = Math.floor(Math.pow(DOM.slider.value / 10, 2)) + 1;
+        resizeCanvas(); resetSim(); requestAnimationFrame(loop);
+    }
+
+    let resizeTimeout;
+    function debounceResize() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => { resizeCanvas(); renderAll(); }, 200);
+    }
+
+    function resizeCanvas() {
+        const dpr = window.devicePixelRatio || 1;
+        [DOM.canL, DOM.canP].forEach(c => {
+            const rect = c.parentElement.getBoundingClientRect();
+            c.width = rect.width * dpr; c.height = rect.height * dpr;
+            c.getContext('2d').scale(dpr, dpr);
+            c.logicalW = rect.width; c.logicalH = rect.height;
+        });
+    }
+
+    function resetSim() {
+        State.running = false;
+        
+        // Memory efficient grids (Typed Arrays)
+        State.lin.grid = new Uint8Array(CFG.SIZE * CFG.SIZE);
+        State.par.grid = new Uint8Array(CFG.SIZE * CFG.SIZE);
+        
+        State.lin.q.clear(); State.par.q.clear();
+        State.lin.count = 0; State.par.count = 0;
+        State.lin.done = false; State.par.done = false;
+
+        // Seed Linear (Top Left)
+        State.lin.grid[0] = 2; 
+        State.lin.q.push(0);
+
+        // Seed Pulickal Parallel (4 Corners)
+        const corners =[0, CFG.SIZE-1, (CFG.SIZE-1)*CFG.SIZE, (CFG.SIZE*CFG.SIZE)-1];
+        corners.forEach(idx => { State.par.grid[idx] = 2; State.par.q.push(idx); });
+
+        DOM.status.innerText = "SYSTEM READY"; DOM.status.classList.remove('running');
+        updateUI(); renderAll();
+    }
+
+    function startSim() {
+        if(State.lin.done && State.par.done) resetSim();
+        State.running = true;
+        DOM.status.innerText = "PROCESSING ALGORITHM..."; DOM.status.classList.add('running');
+    }
+
+    function getNeighbors(idx) {
+        const x = idx % CFG.SIZE, y = Math.floor(idx / CFG.SIZE);
+        const n =[];
+        if(x > 0) n.push(idx - 1);           // Left
+        if(x < CFG.SIZE-1) n.push(idx + 1);  // Right
+        if(y > 0) n.push(idx - CFG.SIZE);    // Up
+        if(y < CFG.SIZE-1) n.push(idx + CFG.SIZE); // Down
+        return n;
+    }
+
+    function stepLogic() {
+        // LINEAR: Process exactly 1 node per iteration
+        if (State.lin.q.length > 0) {
+            const curr = State.lin.q.pop();
+            State.lin.grid[curr] = 1; State.lin.count++;
+            
+            getNeighbors(curr).forEach(nIdx => {
+                if (State.lin.grid[nIdx] === 0) {
+                    State.lin.grid[nIdx] = 2; State.lin.q.push(nIdx);
+                }
+            });
+        } else State.lin.done = true;
+
+        // PULICKAL PARALLEL: Process up to 4 nodes per iteration (simulating 4 threads)
+        if (State.par.q.length > 0) {
+            let ops = Math.min(4, State.par.q.length);
+            for(let i=0; i<ops; i++) {
+                const curr = State.par.q.pop();
+                State.par.grid[curr] = 1; State.par.count++;
+                
+                getNeighbors(curr).forEach(nIdx => {
+                    if (State.par.grid[nIdx] === 0) {
+                        State.par.grid[nIdx] = 2; State.par.q.push(nIdx);
+                    }
+                });
+            }
+        } else State.par.done = true;
+
+        if (State.lin.done && State.par.done) {
+            State.running = false;
+            DOM.status.innerText = "CONVERGENCE ACHIEVED";
+        }
+    }
+
+    function loop() {
+        if (State.running) {
+            for (let i = 0; i < State.stepsPerFrame; i++) {
+                if(!State.running) break;
+                stepLogic();
+            }
+            updateUI(); renderAll();
+        }
+        requestAnimationFrame(loop);
+    }
+
+    function renderAll() {
+        drawGrid(DOM.ctxL, DOM.canL, State.lin.grid, CFG.C_LIN);
+        drawGrid(DOM.ctxP, DOM.canP, State.par.grid, CFG.C_PAR);
+    }
+
+    function drawGrid(ctx, canvas, grid, color) {
+        if(!canvas.logicalW) return;
+        const w = canvas.logicalW, h = canvas.logicalH;
+        const cw = w / CFG.SIZE, ch = h / CFG.SIZE;
+
+        ctx.fillStyle = CFG.C_BG; ctx.fillRect(0, 0, w, h);
+
+        for (let i = 0; i < grid.length; i++) {
+            if (grid[i] === 0) continue;
+            
+            const x = (i % CFG.SIZE) * cw;
+            const y = Math.floor(i / CFG.SIZE) * ch;
+
+            if (grid[i] === 1) { ctx.globalAlpha = 0.3; ctx.fillStyle = color; } 
+            else { ctx.globalAlpha = 1.0; ctx.fillStyle = CFG.C_ACT; }
+            
+            // Draw slightly smaller to create grid gap effect
+            ctx.fillRect(x, y, cw - 0.5, ch - 0.5); 
+        }
+        ctx.globalAlpha = 1.0;
+    }
+
+    function updateUI() {
+        DOM.statL.innerText = State.lin.count;
+        DOM.statP.innerText = State.par.count;
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+<!-- 
+    =======================================================================
+    MODULE: PULICKAL CUBIX ENGINE[ELITE 3D GPU ACCELERATED]
+    DEPENDENCIES: Three.js + OrbitControls
+    =======================================================================
+-->
+
+<!-- Safety Loaders (Duplicate friendly) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<style>
+    /* VARIABLES & RESET FOR 3D MODULE */
+    #pulickal-3d-elite {
+        --c3d-bg: #020203;
+        --c3d-panel: rgba(10, 10, 12, 0.8);
+        --c3d-border: #1a1a1e;
+        --c3d-cyan: #00f3ff;
+        --c3d-gold: #d4af37;
+        --c3d-font: 'Manrope', sans-serif;
+    }
+
+    .p3d-container {
+        position: relative; width: 100%; height: 85vh; min-height: 650px;
+        background: var(--c3d-bg); border: 1px solid var(--c3d-border);
+        border-radius: 8px; margin: 4rem 0; display: flex; flex-direction: column;
+        overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        font-family: var(--c3d-font);
+    }
+
+    .p3d-header {
+        flex: 0 0 auto; display: flex; justify-content: space-between; align-items: center;
+        padding: 1.5rem 2rem; background: rgba(5,5,5,0.9); border-bottom: 1px solid var(--c3d-border);
+        z-index: 10; pointer-events: none;
+    }
+
+    .p3d-tag { font-size: 0.7rem; color: var(--c3d-gold); letter-spacing: 4px; font-weight: 800; text-transform: uppercase; }
+    .p3d-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin: 5px 0 0 0; letter-spacing: 1px; }
+
+    .p3d-badge {
+        font-family: monospace; font-size: 0.8rem; padding: 6px 14px;
+        border: 1px solid #333; color: #666; background: rgba(0,0,0,0.5);
+        transition: all 0.3s;
+    }
+    .p3d-badge.active { border-color: var(--c3d-gold); color: var(--c3d-gold); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+
+    .p3d-viewport {
+        flex: 1; display: grid; grid-template-columns: 1fr 1fr;
+        position: relative; background: radial-gradient(circle at center, #0f0f14 0%, #000 100%);
+    }
+
+    .p3d-scene { position: relative; border-right: 1px solid #111; touch-action: pan-y; }
+    .p3d-scene:last-child { border-right: none; }
+    .canvas-target { width: 100%; height: 100%; display: block; outline: none; cursor: grab; }
+    .canvas-target:active { cursor: grabbing; }
+
+    .scene-overlay { position: absolute; top: 20px; left: 20px; z-index: 5; pointer-events: none; }
+    .scene-overlay.right { left: auto; right: 20px; text-align: right; }
+
+    .scene-tag {
+        font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+        margin-bottom: 5px; padding-left: 10px; border-left: 3px solid #fff;
+    }
+    .scene-tag.blue { border-color: var(--c3d-cyan); color: var(--c3d-cyan); }
+    .scene-tag.gold { border-color: var(--c3d-gold); color: var(--c3d-gold); border-left: none; border-right: 3px solid var(--c3d-gold); padding-left: 0; padding-right: 10px; }
+
+    .scene-stat { font-size: 0.75rem; color: #666; font-family: monospace; letter-spacing: 1px; }
+    .scene-stat span { color: #fff; font-weight: bold; font-size: 1.3rem; margin-left: 5px; }
+
+    .core-alert {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
+        padding: 15px 30px; border: 2px solid var(--c3d-gold); color: var(--c3d-gold);
+        background: rgba(0,0,0,0.9); font-size: 1.2rem; font-weight: 900; letter-spacing: 5px;
+        opacity: 0; pointer-events: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .core-alert.visible { opacity: 1; transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 30px rgba(212,175,55,0.3); }
+
+    .p3d-footer {
+        flex: 0 0 auto; background: #050505; border-top: 1px solid var(--c3d-border);
+        padding: 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+
+    .p3d-controls { display: flex; gap: 40px; align-items: center; width: 100%; max-width: 800px; justify-content: center; }
+
+    .p3d-slider-box { flex: 1; max-width: 300px; display: flex; flex-direction: column; gap: 10px; }
+    .p3d-slider-box label { font-size: 0.7rem; color: #888; letter-spacing: 2px; font-weight: bold; }
+    
+    input[type=range].p3d-range { 
+        width: 100%; height: 4px; background: #222; outline: none; -webkit-appearance: none; border-radius: 2px; cursor: pointer;
+    }
+    input[type=range].p3d-range::-webkit-slider-thumb {
+        -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--c3d-gold); transition: 0.2s;
+    }
+    input[type=range].p3d-range::-webkit-slider-thumb:hover { transform: scale(1.3); }
+
+    .p3d-actions { display: flex; gap: 15px; }
+    .p3d-btn {
+        padding: 12px 24px; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px;
+        text-transform: uppercase; cursor: pointer; transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+        border: 1px solid #333; background: transparent; color: #aaa;
+    }
+    .p3d-btn:hover { border-color: #fff; color: #fff; }
+    .p3d-btn.solid { background: var(--c3d-gold); border-color: var(--c3d-gold); color: #000; }
+    .p3d-btn.solid:hover { background: #ffea99; border-color: #ffea99; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); }
+
+    .p3d-hint { font-size: 0.6rem; color: #444; letter-spacing: 3px; text-transform: uppercase; margin-top: 15px; }
+
+    @media (max-width: 900px) {
+        .p3d-viewport { grid-template-columns: 1fr; }
+        .p3d-scene { height: 40vh; border-right: none; border-bottom: 1px solid var(--c3d-border); }
+        .p3d-header { flex-direction: column; gap: 15px; align-items: flex-start; }
+        .p3d-controls { flex-direction: column; gap: 20px; }
+        .p3d-slider-box { max-width: 100%; width: 100%; }
+    }
+</style>
+
+<section id="pulickal-3d-elite" class="p3d-container">
+    <div class="p3d-header">
+        <div>
+            <span class="p3d-tag">VOLUMETRIC RESEARCH</span>
+            <h2 class="p3d-title">CUBIX ARCHITECTURE</h2>
+        </div>
+        <div class="p3d-badge" id="p3d-status">AWAITING INITIATION</div>
+    </div>
+
+    <div class="p3d-viewport">
+        <!-- LEFT: LINEAR ENGINE -->
+        <div class="p3d-scene" id="scene-linear">
+            <div class="scene-overlay">
+                <div class="scene-tag blue">LINEAR VOXEL SCAN</div>
+                <div class="scene-stat">VOXELS: <span id="stat-3d-lin">0</span></div>
+            </div>
+            <div class="canvas-target" id="target-linear"></div>
+        </div>
+
+        <!-- RIGHT: PULICKAL ENGINE -->
+        <div class="p3d-scene" id="scene-pulickal">
+            <div class="scene-overlay right">
+                <div class="scene-tag gold">PULICKAL 8-FRONT</div>
+                <div class="scene-stat">VOXELS: <span id="stat-3d-par">0</span></div>
+            </div>
+            <div class="canvas-target" id="target-pulickal"></div>
+            <div class="core-alert" id="core-alert">CORE CRITICAL</div>
+        </div>
+    </div>
+
+    <div class="p3d-footer">
+        <div class="p3d-controls">
+            <div class="p3d-slider-box">
+                <label>EXECUTION CLOCK (OPS/FRAME)</label>
+                <input type="range" class="p3d-range" id="p3d-speed" min="1" max="100" value="40">
+            </div>
+            <div class="p3d-actions">
+                <button id="btn-3d-reset" class="p3d-btn outline">RESET VOLUME</button>
+                <button id="btn-3d-run" class="p3d-btn solid">RUN SIMULATION</button>
+            </div>
+        </div>
+        <div class="p3d-hint">INTERACTION: CLICK & DRAG TO ROTATE CUBES</div>
+    </div>
+</section>
+
+<script>
+(function() {
+    /**
+     * PULICKAL 3D GPU ACCELERATED ENGINE
+     * Uses InstancedMesh & O(1) FastQueues to eliminate rendering lag and logical stutters.
+     */
+
+    // --- CONFIGURATION ---
+    const SIZE = 10; 
+    const TOTAL_VOXELS = SIZE * SIZE * SIZE;
+    
+    const COLORS = {
+        BASE: new THREE.Color(0x111111),      // Unvisited
+        LIN_FRONT: new THREE.Color(0x00f3ff), // Linear Wavefront
+        LIN_VISIT: new THREE.Color(0x004455), // Linear Explored
+        PAR_FRONT: new THREE.Color(0xffffff), // Pulickal Wavefront (White hot)
+        PAR_VISIT: new THREE.Color(0xd4af37), // Pulickal Explored (Gold)
+        CORE: new THREE.Color(0xff3333)       // Center Core Match
+    };
+
+    // --- O(1) PERFORMANCE QUEUE ---
+    class FastQueue {
+        constructor() { this.data =[]; this.head = 0; }
+        push(item) { this.data.push(item); }
+        pop() { return this.head < this.data.length ? this.data[this.head++] : null; }
+        get length() { return this.data.length - this.head; }
+        clear() { this.data =[]; this.head = 0; }
+    }
+
+    // --- INSTANCED 3D ENGINE ---
+    class Engine3D {
+        constructor(targetId, colorFront, colorVisit) {
+            this.container = document.getElementById(targetId);
+            this.colorFront = colorFront;
+            this.colorVisit = colorVisit;
+            
+            // Core Three.js Setup
+            this.scene = new THREE.Scene();
+            this.scene.fog = new THREE.FogExp2(0x000000, 0.02);
+            
+            const aspect = this.container.offsetWidth / this.container.offsetHeight;
+            this.camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1000);
+            
+            // Positioning for Isometric-style look
+            const offset = (SIZE / 2) - 0.5;
+            this.camera.position.set(offset + 16, offset + 12, offset + 16);
+            
+            this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); 
+            this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
+            this.container.appendChild(this.renderer.domElement);
+            
+            this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+            this.controls.enableDamping = true;
+            this.controls.autoRotate = true;
+            this.controls.autoRotateSpeed = 0.8;
+            this.controls.target.set(offset, offset, offset);
+
+            // Lighting (Optimized)
+            this.scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+            const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+            pointLight.position.set(offset + 10, offset + 20, offset + 10);
+            this.scene.add(pointLight);
+
+            // INSTANCED MESH (Replaces 1000 individual meshes = 1 Draw Call)
+            const geometry = new THREE.BoxGeometry(0.75, 0.75, 0.75); // Slight gap between voxels
+            const material = new THREE.MeshLambertMaterial({ color: 0xffffff });
+            this.mesh = new THREE.InstancedMesh(geometry, material, TOTAL_VOXELS);
+            
+            const dummy = new THREE.Object3D();
+            for (let z = 0; z < SIZE; z++) {
+                for (let y = 0; y < SIZE; y++) {
+                    for (let x = 0; x < SIZE; x++) {
+                        const i = x + y * SIZE + z * SIZE * SIZE;
+                        dummy.position.set(x, y, z);
+                        dummy.updateMatrix();
+                        this.mesh.setMatrixAt(i, dummy.matrix);
+                        this.mesh.setColorAt(i, COLORS.BASE);
+                    }
+                }
+            }
+            this.scene.add(this.mesh);
+
+            // Logic State
+            this.grid = new Uint8Array(TOTAL_VOXELS);
+            this.q = new FastQueue();
+            this.count = 0;
+            this.done = false;
+        }
+
+        reset() {
+            this.grid.fill(0);
+            this.q.clear();
+            this.count = 0;
+            this.done = false;
+            for(let i=0; i<TOTAL_VOXELS; i++) this.mesh.setColorAt(i, COLORS.BASE);
+            this.mesh.instanceColor.needsUpdate = true;
+        }
+
+        // Activates a node into the "Frontier" state
+        activate(x, y, z) {
+            if(x<0||x>=SIZE||y<0||y>=SIZE||z<0||z>=SIZE) return;
+            const i = x + y*SIZE + z*SIZE*SIZE;
+            
+            if(this.grid[i] === 0) {
+                this.grid[i] = 1; // 1 = In Queue (Frontier)
+                this.q.push({x, y, z, i});
+                this.count++;
+                
+                // Core Center Check
+                const isCore = (x>=4&&x<=5 && y>=4&&y<=5 && z>=4&&z<=5);
+                this.mesh.setColorAt(i, isCore ? COLORS.CORE : this.colorFront);
+            }
+        }
+
+        // Processes nodes from Frontier to Visited
+        step(batchLimit) {
+            if (this.q.length === 0) { this.done = true; return; }
+            
+            const ops = Math.min(batchLimit, this.q.length);
+            for (let k = 0; k < ops; k++) {
+                const node = this.q.pop();
+                this.grid[node.i] = 2; // 2 = Visited
+
+                // Dim the color to show it has been processed
+                const isCore = (node.x>=4&&node.x<=5 && node.y>=4&&node.y<=5 && node.z>=4&&node.z<=5);
+                if (!isCore) this.mesh.setColorAt(node.i, this.colorVisit);
+
+                // Expand 6 Orthogonal Neighbors
+                this.activate(node.x+1, node.y, node.z);
+                this.activate(node.x-1, node.y, node.z);
+                this.activate(node.x, node.y+1, node.z);
+                this.activate(node.x, node.y-1, node.z);
+                this.activate(node.x, node.y, node.z+1);
+                this.activate(node.x, node.y, node.z-1);
+            }
+            this.mesh.instanceColor.needsUpdate = true;
+        }
+
+        resize() {
+            const w = this.container.offsetWidth, h = this.container.offsetHeight;
+            this.camera.aspect = w / h;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(w, h);
+        }
+    }
+
+    // --- CONTROLLER LOGIC ---
+    let sysLin, sysPar;
+    const UI = {};
+    const State = { isRunning: false, opsPerFrame: 2 };
+
+    function init() {
+        UI.statL = document.getElementById('stat-3d-lin');
+        UI.statP = document.getElementById('stat-3d-par');
+        UI.status = document.getElementById('p3d-status');
+        UI.alert = document.getElementById('core-alert');
+        UI.slider = document.getElementById('p3d-speed');
+        
+        sysLin = new Engine3D('target-linear', COLORS.LIN_FRONT, COLORS.LIN_VISIT);
+        sysPar = new Engine3D('target-pulickal', COLORS.PAR_FRONT, COLORS.PAR_VISIT);
+
+        // Events
+        document.getElementById('btn-3d-run').addEventListener('click', startSimulation);
+        document.getElementById('btn-3d-reset').addEventListener('click', resetSimulation);
+        
+        UI.slider.addEventListener('input', (e) => {
+            // Map 1-100 to an exponential curve for operations per frame
+            const val = parseInt(e.target.value);
+            State.opsPerFrame = Math.max(1, Math.floor(Math.pow(val/20, 2)));
+        });
+        
+        State.opsPerFrame = Math.max(1, Math.floor(Math.pow(UI.slider.value/20, 2)));
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => { sysLin.resize(); sysPar.resize(); }, 150);
+        });
+
+        resetSimulation();
+        requestAnimationFrame(renderLoop);
+    }
+
+    function resetSimulation() {
+        State.isRunning = false;
+        sysLin.reset();
+        sysPar.reset();
+        
+        // Setup Linear (Corner 0,0,0)
+        sysLin.activate(0, 0, 0);
+        
+        // Setup Pulickal (8 Corners Parallel)
+        const m = SIZE - 1;
+        const corners = [
+            [0,0,0], [m,0,0], [0,m,0],[0,0,m],
+            [m,m,0], [m,0,m],[0,m,m], [m,m,m]
+        ];
+        corners.forEach(c => sysPar.activate(c[0], c[1], c[2]));
+
+        // Update visuals explicitly once
+        sysLin.mesh.instanceColor.needsUpdate = true;
+        sysPar.mesh.instanceColor.needsUpdate = true;
+
+        UI.statL.innerText = "1";
+        UI.statP.innerText = "8";
+        UI.status.innerText = "SYSTEM READY";
+        UI.status.classList.remove('active');
+        UI.alert.classList.remove('visible');
+    }
+
+    function startSimulation() {
+        if(sysLin.done && sysPar.done) resetSimulation();
+        State.isRunning = true;
+        UI.status.innerText = "PROCESSING VOLUME...";
+        UI.status.classList.add('active');
+    }
+
+    function renderLoop() {
+        requestAnimationFrame(renderLoop);
+
+        // Always rotate and render to keep the UI feeling alive
+        sysLin.controls.update();
+        sysLin.renderer.render(sysLin.scene, sysLin.camera);
+        
+        sysPar.controls.update();
+        sysPar.renderer.render(sysPar.scene, sysPar.camera);
+
+        if(State.isRunning) {
+            // Linear processes linearly (1x multiplier)
+            if(!sysLin.done) {
+                sysLin.step(State.opsPerFrame);
+                UI.statL.innerText = sysLin.count;
+            }
+            
+            // Pulickal processes in parallel (8x multiplier representing 8 fronts)
+            if(!sysPar.done) {
+                sysPar.step(State.opsPerFrame * 8);
+                UI.statP.innerText = sysPar.count;
+                
+                // Show core alert immediately when parallel reaches center
+                if(sysPar.done) UI.alert.classList.add('visible');
+            }
+
+            if(sysLin.done && sysPar.done) {
+                State.isRunning = false;
+                UI.status.innerText = "MAPPING COMPLETE";
+            }
+        }
+    }
+
+    // Wait for DOM
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+
+})();
+</script>
+  
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <div class="sim-grid">
+        <div class="sim-card" id="openSimBtn">
+            <div class="sim-bg-icon"></div>
+
+            <div class="sim-content center-content">
+                <h3>1. Anomaly Detection in Elliptical Clusters</h3>
+                <p>
+                    A deterministic geometric approach to identifying outliers in rotated manifolds using the Maximum Cluster Diameter Criteria.
+                </p>
+                
+                <div class="math-display">
+                    <div class="equation-block">
+                        $$ \text{Outlier if } D_L > D_X \lor D_R > D_X $$
+                        $$ \text{Outlier if } D_B > D_Y \lor D_T > D_Y $$
+                    </div>
+                    <div class="math-footer">
+                        Where Dx is the Major Axis and Dy is the Minor Axis.
+                    </div>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Anomalies Detected</span>
+                        <span class="stat-value text-red" id="anomCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Sample Size (N)</span>
+                        <span class="stat-value text-gold" id="totalCount">0</span>
                     </div>
                 </div>
                 
-                <div class="contact-info">
-                    <p>📍 Goa, India</p>
-                    <p>🎓 NIT Goa Alumnus</p>
+                <div class="sim-btn-wrapper">
+                    <button class="action-btn">View Simulation</button>
                 </div>
-
-                <nav class="main-nav">
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#gallery" class="nav-link">Gallery</a>
-                    <a href="#artwork" class="nav-link">Origami</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </nav>
             </div>
-        </aside>
+        </div>
+        
+        
+    <div class="sim-card" id="openTernaryBtn">
+        <div class="sim-content">
+            <h3>2. Balanced Ternary NAND</h3>
+            <p>Visualization of tri-state logic processing (-1, 0, 1) using the negation of the minimum input criteria.</p>
+            <div class="math-display">
+                $$ Y = - \min(A, B) $$
+            </div>
+            <button class="sim-btn">Launch Gate</button>
+        </div>
+    </div>
+    
+    <div class="sim-card" id="openImaginaryBtn">
+    <div class="sim-content">
+        <h3>3. Imaginary Logic NAND</h3>
+        <p>A quad-state simulation exploring the orthogonal dimension of i, representing AC characteristics and plasma states.</p>
+        <div class="math-display">
+            <div class="equation-block">
+                $$ Y = -1 \text{ if } (A,B) \in \{1, i\}^2 \setminus \{(i,i)\} $$
+                $$ Y = i \text{ if } A=i, B=i $$
+            </div>
+        </div>
+        <button class="sim-btn">Open Circuit</button>
+    </div>
+</div>
+    <div class="sim-card" id="openPiBtn">
+    <div class="sim-content">
+        <h3>4. Complex Identity for pi</h3>
+        <p>A visualization of the logarithmic relationship between i and pi, deriving the constant from the geometry of the complex plane.</p>
+        <div class="math-display">
+            <div class="equation-block">
+                $$ \pi = \frac{2 \ln(i)}{i} $$
+            </div>
+        </div>
+        <button class="sim-btn">Observe Identity</button>
+    </div>
+</div>
 
-        <main class="content">
-            
-            <section id="about" class="fade-in">
-                <h2>About Me</h2>
-                <p class="lead">Hello. I am <strong>Pearl Bipin Pulickal</strong> (also known as Pearl Bipin).</p>
-                <p>I am a polymath and researcher bridging the gap between <strong>Abstract Mathematics</strong> (Category Theory, Topology) and <strong>Engineering</strong>. My work focuses on "Whitebox AI".</p>
-                <p>I hold a B.Tech in Electronics & Communication Engineering from <strong>NIT Goa</strong> and am currently pursuing advanced studies in Mathematics and Data Science.</p>
-            </section>
+<div class="sim-card" id="openObserverBtn">
+    <div class="sim-content">
+        <h3>5. Complex Dynamics Observer</h3>
+        <p>A rigorous demonstration of how branch cut discontinuities generate stable period-2 orbits.</p>
+        <div class="math-display">
+            $$ \theta^* = \pm \frac{\pi}{n+1} $$
+        </div>
+        <button class="sim-btn">Initialize Observer</button>
+    </div>
+</div>
 
-            <section id="gallery" class="fade-in">
-                <h2>Visual Gallery</h2>
-                <div class="photo-grid">
-                    <!-- Cards auto-generated layout -->
-                    <div class="card"><img src="images/pearl-bipin-pulickal-13.jpg" loading="lazy" alt="NIT Goa Convocation"><div class="caption">NIT Goa Convocation</div></div>
-                    <div class="card"><img src="images/pearl-bipin-pulickal-7.jpg" loading="lazy" alt="Research Work"><div class="caption">Research Mode</div></div>
-                    <div class="card"><img src="images/pearl-bipin-pulickal-14.jpg" loading="lazy" alt="Portrait"><div class="caption">Portrait</div></div>
-                    <div class="card"><img src="images/pearl-bipin-pulickal-3.jpg" loading="lazy" alt="Royal Enfield"><div class="caption">The Royal Enfield</div></div>
-                    <div class="card"><img src="images/pearl-bipin-pulickal-17.jpg" loading="lazy" alt="Geometric Folding"><div class="caption">Geometric Folding</div></div>
-                    <div class="card"><img src="images/pearl-bipin-pulickal-2.jpg" loading="lazy" alt="Origami Architecture"><div class="caption">Origami Architecture</div></div>
-                    <div class="card"><img src="images/pearl-bipin-pulickal-4.jpg" loading="lazy" alt="Honda SP125"><div class="caption">Honda SP125</div></div>
-                    <div class="card"><img src="images/pearl-bipin-pulickal-1.jpg" loading="lazy" alt="Selfie Portrait"><div class="caption">Portrait</div></div>
-                    <div class="card"><img src="images/pearl-bipin-pulickal-6.jpg" loading="lazy" alt="Process"><div class="caption">Process</div></div>
-                    <div class="card"><img src="images/pearl-bipin-pulickal-11.jpg" loading="lazy" alt="Deep Thought"><div class="caption">Deep Thought</div></div>
-                    <div class="card"><img src="images/pearl-bipin-pulickal-5.jpg" loading="lazy" alt="Casual"><div class="caption">Casual</div></div>
-                    <div class="card"><img src="images/pearl-bipin-pulickal-10.jpg" loading="lazy" alt="Mirror Check"><div class="caption">Mirror Check</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-20.jpg" loading="lazy" alt="Professional Profile"><div class="caption">Professional Profile</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-21.jpg" loading="lazy" alt="Networking"><div class="caption">Networking in Goa</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-22.jpg" loading="lazy" alt="Strategy"><div class="caption">Strategic Planning</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-23.jpg" loading="lazy" alt="Portfolio"><div class="caption">Modern Portfolio</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-24.jpg" loading="lazy" alt="Author"><div class="caption">Bipin Pulickal</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-25.jpg" loading="lazy" alt="Official Portrait"><div class="caption">Pearl Bipin</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-26.jpg" loading="lazy" alt="Research Focus"><div class="caption">Research Focus</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-27.jpg" loading="lazy" alt="Formal Event"><div class="caption">Formal Event</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-28.jpg" loading="lazy" alt="Goa Travel"><div class="caption">Goa Travel Diaries</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-29.jpg" loading="lazy" alt="Expert Speaker"><div class="caption">Expert Speaker</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-30.jpg" loading="lazy" alt="Pearl Pulickal"><div class="caption">Pearl Pulickal</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-31.jpg" loading="lazy" alt="Goa Lifestyle"><div class="caption">Goa Lifestyle</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-32.jpg" loading="lazy" alt="Academic Profile"><div class="caption">Academic Profile</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-33.jpg" loading="lazy" alt="Conference Ready"><div class="caption">Conference Ready</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-35.jpg" loading="lazy" alt="Data Scientist"><div class="caption">Data Scientist</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-36.jpg" loading="lazy" alt="Casual Meeting"><div class="caption">Casual Meeting</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-37.jpg" loading="lazy" alt="Deep Thought"><div class="caption">Deep Thought</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-38.jpg" loading="lazy" alt="Author Profile"><div class="caption">Author Profile</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-39.jpg" loading="lazy" alt="Future Vision"><div class="caption">Future Vision</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-40.jpg" loading="lazy" alt="Candid Moment"><div class="caption">Candid Moment</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-42.jpg" loading="lazy" alt="Theology"><div class="caption">Theology & Faith</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-43.jpg" loading="lazy" alt="Nature Lover"><div class="caption">Nature Lover</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-44.jpg" loading="lazy" alt="Modern Portrait"><div class="caption">Modern Portrait</div></div>
-                    <div class="card"><img src="images/Pearl-Bipin-Pulickal-45.jpg" loading="lazy" alt="Social Lifestyle"><div class="caption">Social Lifestyle</div></div>
-                </div>
-            </section>
+    </div>
+</section>
 
-            <section id="artwork" class="artwork fade-in">
-                <h2>Origami Creations</h2>
-                <p class="section-subtitle">Origami & Pencil Art</p>
+<div id="simModal" class="sim-modal">
+    <div class="modal-content">
+        <button class="close-sim" id="closeSimBtn">&times;</button>
+        
+        <div class="sim-controls">
+            <button id="runSimAction" class="sim-btn">Run Simulation</button>
+        </div>
+
+        <div class="sim-container">
+            <canvas id="anomalyCanvas"></canvas>
             
-                <div class="gallery">
-                    <!-- Gallery Items -->
-                    <div class="gallery-item"><img src="images/1.JPG" alt="Paper Form" loading="lazy"><div class="caption">Paper Form</div></div>
-                    <div class="gallery-item"><img src="images/2.JPG" alt="Folded Structure" loading="lazy"><div class="caption">Folded Structure</div></div>
-                    <div class="gallery-item"><img src="images/3.JPG" alt="Sketch Study" loading="lazy"><div class="caption">Sketch Study</div></div>
-                    <div class="gallery-item"><img src="images/4.JPG" alt="Graphite Drawing" loading="lazy"><div class="caption">Graphite Drawing</div></div>
-                    <div class="gallery-item"><img src="images/5.JPG" alt="Concept Sketch" loading="lazy"><div class="caption">Concept Sketch</div></div>
-                    <div class="gallery-item"><img src="images/6.JPG" alt="Freehand Study" loading="lazy"><div class="caption">Freehand Study</div></div>
-                    <div class="gallery-item"><img src="images/7.jpg" alt="Paper Geometry" loading="lazy"><div class="caption">Paper Geometry</div></div>
-                    <div class="gallery-item"><img src="images/8.jpg" alt="Illustration" loading="lazy"><div class="caption">Illustration</div></div>
-                    <div class="gallery-item"><img src="images/9.jpg" alt="Folded Expression" loading="lazy"><div class="caption">Folded Expression</div></div>
-                    <div class="gallery-item"><img src="images/10.jpg" alt="Paper Design" loading="lazy"><div class="caption">Paper Design</div></div>
-                    <div class="gallery-item"><img src="images/11.jpg" alt="Paper Craft" loading="lazy"><div class="caption">Paper Craft</div></div>
-                    <div class="gallery-item"><img src="images/12.jpg" alt="Folded Art" loading="lazy"><div class="caption">Folded Art</div></div>
-                    <div class="gallery-item"><img src="images/13.jpg" alt="Form Exploration" loading="lazy"><div class="caption">Form Exploration</div></div>
-                    <div class="gallery-item"><img src="images/14.jpg" alt="Structural Fold" loading="lazy"><div class="caption">Structural Fold</div></div>
-                    <div class="gallery-item"><img src="images/15.jpg" alt="Paper Sculpture" loading="lazy"><div class="caption">Paper Sculpture</div></div>
-                    <div class="gallery-item"><img src="images/16.jpg" alt="Fold Composition" loading="lazy"><div class="caption">Fold Composition</div></div>
-                    <div class="gallery-item"><img src="images/17.jpg" alt="Geometric Fold" loading="lazy"><div class="caption">Geometric Fold</div></div>
-                    <div class="gallery-item"><img src="images/18.jpg" alt="Paper Abstraction" loading="lazy"><div class="caption">Paper Abstraction</div></div>
-                    <div class="gallery-item"><img src="images/19.jpg" alt="Minimal Fold" loading="lazy"><div class="caption">Minimal Fold</div></div>
-                    <div class="gallery-item"><img src="images/20.jpg" alt="Design Study" loading="lazy"><div class="caption">Design Study</div></div>
-                    <div class="gallery-item"><img src="images/21.jpg" alt="Paper Dynamics" loading="lazy"><div class="caption">Paper Dynamics</div></div>
-                    <div class="gallery-item"><img src="images/22.jpg" alt="Folded Motion" loading="lazy"><div class="caption">Folded Motion</div></div>
-                    <div class="gallery-item"><img src="images/23.jpg" alt="Visual Form" loading="lazy"><div class="caption">Visual Form</div></div>
-                    <div class="gallery-item"><img src="images/24.jpg" alt="Paper Expression" loading="lazy"><div class="caption">Paper Expression</div></div>
-                </div>
-            </section>
-            
-            <section id="contact" class="fade-in">
-                <h2>Contact</h2>
-                <div class="contact-box">
-                    <p>Open for consulting in Mathematical Modeling and Data Science.</p>
-                    
-                    <div class="email-wrapper">
-                        <a href="#" id="contactBtn" class="button contact-reveal" data-email="pearlbipin@gmail.com">
-                            <span class="btn-text">Get in Touch</span>
-                        </a>
-                        <span id="copyFeedback" class="copy-feedback">Copied to clipboard!</span>
+            <div class="math-panel">
+                <div class="panel-header">
+                    <div class="status-indicator">
+                        <span class="pulse-dot"></span>
+                        <span id="simStatus">Ready</span>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </div>
+</div>
 
-            <footer>
-                <p>&copy; 2026 Pearl Bipin Pulickal. <br><span style="font-size: 0.8rem">All rights reserved.</span></p>
-                <button id="backToTop" title="Back to Top">↑</button>
-            </footer>
+<div id="ternaryModal" class="sim-modal">
+    <div class="modal-content">
+        <button class="close-sim" id="closeTernaryBtn">&times;</button>
+        <div class="sim-controls">
+            <h3 style="color: var(--gold-flat); margin-bottom: 10px;">Ternary NAND Logic Flow</h3>
+            <p style="font-size: 0.8rem; color: #888;">Input states: 1 (High), 0 (Neutral), -1 (Low)</p>
+        </div>
+        <canvas id="ternaryCanvas" style="background: #000; width: 100%; height: 500px; border: 1px solid #222; border-radius: 4px;"></canvas>
+    </div>
+</div>
 
-        </main>
+<div id="imaginaryModal" class="sim-modal">
+    <div class="modal-content">
+        <button class="close-sim" id="closeImaginaryBtn">&times;</button>
+        <div class="sim-controls">
+            <h3 style="color: var(--gold-flat); margin-bottom: 10px;">Imaginary NAND (i-Logic)</h3>
+            <p style="font-size: 0.8rem; color: #888;">States: 1 (DC High), 0 (Neutral), -1 (DC Low), i (AC/Oscillating) </p>
+        </div>
+        <canvas id="imaginaryCanvas" style="background: #000; width: 100%; height: 500px; border: 1px solid #222; border-radius: 4px;"></canvas>
+    </div>
+</div>
+
+<div id="piModal" class="sim-modal">
+    <div class="modal-content">
+        <button class="close-sim" id="closePiBtn">&times;</button>
+        <div class="sim-controls">
+            <h3 style="color: var(--gold-flat); margin-bottom: 10px;">The Geometry of ln(i)</h3>
+            <p style="font-size: 0.8rem; color: #888;">Tracing the arc from 1 to i to reveal the principal branch of the complex logarithm.</p>
+        </div>
+        <canvas id="piCanvas" style="background: #000; width: 100%; height: 500px; border: 1px solid #222; border-radius: 4px;"></canvas>
+    </div>
+</div>
+
+<div id="observerModal" class="sim-modal">
+    <div class="modal-content" style="max-width: 1100px; display: grid; grid-template-columns: 1fr 280px; gap: 20px; background: #0a0a0a; border: 1px solid #222; padding: 25px; border-radius: 8px;">
+    <button class="close-sim" id="closeObserverBtn" style="position: absolute; top: -50px; right: 0; background: none; border: none; color: #fff; font-size: 2.5rem; cursor: pointer;">&times;</button>
+        <div style="position: relative;">
+            <canvas id="observerCanvas" style="width: 100%; height: 600px; background: #000; border-radius: 4px; border: 1px solid #1a1a1a;"></canvas>
+            <div style="position: absolute; top: 20px; left: 20px; color: var(--gold-flat); font-family: monospace; font-size: 11px; pointer-events: none; line-height: 1.5;">
+                SYSTEM_STATUS: ITERATING<br>
+                FUNCTION: Z[k+1] = (-Z[k])^(1/n)
+            </div>
+        </div>
+
+        <div style="border-left: 1px solid #222; padding-left: 25px; display: flex; flex-direction: column;">
+            <h4 style="color: var(--gold-flat); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 30px;">Live Telemetry</h4>
+            
+            <div style="margin-bottom: 25px;">
+                <label style="font-size: 0.65rem; color: #666; display: block; margin-bottom: 5px;">ROOT PARAMETER (n)</label>
+                <div id="tele-n" style="font-size: 1.8rem; color: #fff;">3</div>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label style="font-size: 0.65rem; color: #666; display: block; margin-bottom: 5px;">CURRENT ARGUMENT (θ)</label>
+                <div id="tele-theta" style="font-family: monospace; color: var(--gold-flat);">0.0000 rad</div>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <label style="font-size: 0.65rem; color: #666; display: block; margin-bottom: 5px;">STABLE LIMITS (±π/n+1)</label>
+                <div id="tele-limits" style="font-family: monospace; color: #ff3333;">±0.7854 rad</div>
+            </div>
+
+            <div style="margin-top: auto; font-size: 0.65rem; color: #444; line-height: 1.4;">
+                *Negation creates a $\pi$ phase shift.<br>
+                *Branch cut prevents fixed-point convergence.
+            </div>
+        </div>
+    </div>
+</div>
+
+        <section id="origami" class="container fade-up">
+            <div class="section-header">
+                <span class="section-tag">Artworks</span>
+                <h2 class="section-title">Geometry & Fold</h2>
+            </div>
+            
+            <div class="masonry">
+                <div class="item hover-target"><img src="images/1.JPG" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/2.JPG" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/3.JPG" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/4.JPG" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/5.JPG" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/6.JPG" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/7.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/8.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/9.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/10.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/11.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/12.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/13.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/14.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/15.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/16.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/17.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/18.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/19.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/20.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/21.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/22.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/23.jpg" loading="lazy"></div>
+                <div class="item hover-target"><img src="images/24.jpg" loading="lazy"></div>
+            </div>
+        </section>
+        
+        <section id="consulting" class="container fade-up">
+            <div class="section-header">
+                <span class="section-tag">Direct Access</span>
+                <h2 class="section-title">Strategic Consulting</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div style="max-width: 650px; margin: 0 auto; background: var(--bg-panel); padding: 3rem; border: 1px solid #222; border-radius: 8px; cursor: auto;">
+                <p style="color: #aaa; margin-bottom: 1rem;">Submit a complex problem, high-stakes decision, or strategic bottleneck you’re currently navigating. Whether you’re stuck on an academic research direction, a business logic puzzle, or a personal branding pivot, I will perform a deep-dive analysis of the system and reply with a rigorous, private breakdown of a potential path forward.</p>
+                <ul style="color: #888; margin-bottom: 2rem; padding-left: 20px; font-size: 0.9rem;">
+                    <li><strong>The Rule:</strong> Your problem description must be at least 100 words. Lazy inputs yield lazy outputs.</li>
+                    <li><strong>The Cost:</strong> Pay What You Want. A UPI/Razorpay link will be attached to my solution. If it helps you as a student, it's free. If it unlocks major enterprise value, tip accordingly.</li>
+                </ul>
+
+                <form action="https://api.web3forms.com/submit" method="POST" id="consult-form">
+                    <input type="hidden" name="access_key" value="c574b958-3cc0-4a8b-8810-6fe117079d0b">
+                    <input type="hidden" name="redirect" value="https://pearlbipinpulickal.neocities.org/">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    <input type="hidden" name="subject" value="New Consulting Request">
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="name" style="display: block; color: var(--gold-flat); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Name / Identity</label>
+                        <input type="text" id="name" name="name" required style="width: 100%; padding: 12px; background: #050505; border: 1px solid #222; color: #fff; border-radius: 4px; font-family: inherit; outline: none; transition: border 0.3s;" onfocus="this.style.borderColor='var(--gold-flat)'" onblur="this.style.borderColor='#222'">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="email" style="display: block; color: var(--gold-flat); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Where should I send the solution?</label>
+                        <input type="email" id="email" name="email" required style="width: 100%; padding: 12px; background: #050505; border: 1px solid #222; color: #fff; border-radius: 4px; font-family: inherit; outline: none; transition: border 0.3s;" onfocus="this.style.borderColor='var(--gold-flat)'" onblur="this.style.borderColor='#222'">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="bottleneck" style="display: block; color: var(--gold-flat); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">The Bottleneck (Min 100 words)</label>
+                        <textarea id="bottleneck" name="bottleneck" rows="6" required style="width: 100%; padding: 12px; background: #050505; border: 1px solid #222; color: #fff; border-radius: 4px; font-family: inherit; outline: none; resize: vertical; transition: border 0.3s;" onfocus="this.style.borderColor='var(--gold-flat)'" onblur="this.style.borderColor='#222'"></textarea>
+                        <div style="text-align: right; font-size: 0.75rem; color: #555; margin-top: 5px;">Words: <span id="word-count-display">0</span> / 100</div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label for="tried" style="display: block; color: var(--gold-flat); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">What have you already tried?</label>
+                        <textarea id="tried" name="tried" rows="3" required style="width: 100%; padding: 12px; background: #050505; border: 1px solid #222; color: #fff; border-radius: 4px; font-family: inherit; outline: none; resize: vertical; transition: border 0.3s;" onfocus="this.style.borderColor='var(--gold-flat)'" onblur="this.style.borderColor='#222'"></textarea>
+                    </div>
+
+                    <button type="submit" id="submit-btn" disabled class="hover-target" style="width: 100%; padding: 15px; background: #222; color: #555; border: 1px solid #222; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; cursor: not-allowed; transition: all 0.3s; border-radius: 4px;">Submit Problem</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-wrapper">
+            <div class="container fade-up">
+                <h2 class="section-title">Start a Dialogue</h2>
+                <p style="color: #888; margin-top: 1rem;">Available for high-level consulting in AI interpretability.</p>
+                <button class="cta-button hover-target" id="emailBtn">pearlbipin@gmail.com</button>
+                <div id="copyMsg" style="margin-top:15px; font-size: 0.7rem; color: var(--gold-flat); opacity: 0; transition: opacity 0.3s;">Copied to clipboard</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>&copy; 2026 Pearl B. Pulickal.</div>
+    </footer>
+
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="Enlarged view">
     </div>
 
-    <!-- JavaScript File -->
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          
+          
+          /* =========================================
+               5. DIRECT ACCESS CONSULTING LOGIC
+               ========================================= */
+            const bottleneckInput = document.getElementById('bottleneck');
+            const wordCountDisplay = document.getElementById('word-count-display');
+            const submitBtn = document.getElementById('submit-btn');
+            const minWords = 100;
 
-</body>
-</html>
+            if (bottleneckInput && wordCountDisplay && submitBtn) {
+                bottleneckInput.addEventListener('input', () => {
+                    const text = bottleneckInput.value.trim();
+                    const words = text.length > 0 ? text.split(/\s+/).length : 0;
+                    
+                    wordCountDisplay.textContent = words;
+
+                    if (words >= minWords) {
+                        wordCountDisplay.style.color = 'var(--gold-flat)';
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = 'transparent';
+                        submitBtn.style.color = 'var(--gold-flat)';
+                        submitBtn.style.borderColor = 'var(--gold-flat)';
+                        submitBtn.style.cursor = 'none'; // Matches your site's custom cursor
+                    } else {
+                        wordCountDisplay.style.color = '#555';
+                        submitBtn.disabled = true;
+                        submitBtn.style.background = '#222';
+                        submitBtn.style.color = '#555';
+                        submitBtn.style.borderColor = '#222';
+                        submitBtn.style.cursor = 'not-allowed';
+                    }
+                });
+                
+                // Hover effect for the dynamic button
+                submitBtn.addEventListener('mouseenter', () => {
+                    if (!submitBtn.disabled) submitBtn.style.background = 'rgba(212, 175, 55, 0.1)';
+                });
+                submitBtn.addEventListener('mouseleave', () => {
+                    if (!submitBtn.disabled) submitBtn.style.background = 'transparent';
+                });
+            }
+            
+            /* =========================================
+               1. SCROLL ANIMATIONS
+               ========================================= */
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-up').forEach(section => {
+                observer.observe(section);
+            });
+
+            /* =========================================
+               2. LIGHTBOX LOGIC
+               ========================================= */
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('img');
+
+            document.querySelectorAll('.item img').forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImg.src = img.src;
+                    lightbox.classList.add('active');
+                });
+            });
+
+            lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+
+            /* =========================================
+               3. MATH SIMULATION ENGINE (PEARL'S ALGO)
+               ========================================= */
+            const openSimBtn = document.getElementById('openSimBtn');
+            const closeSimBtn = document.getElementById('closeSimBtn');
+            const simModal = document.getElementById('simModal');
+            const canvasSim = document.getElementById('anomalyCanvas');
+            
+            // Only proceed if these elements exist
+            if (openSimBtn && closeSimBtn && simModal && canvasSim) {
+                const ctxSim = canvasSim.getContext('2d');
+                const anomCountEl = document.getElementById('anomCount');
+                const totalCountEl = document.getElementById('totalCount');
+
+                let simRunning = false;
+                let animationId;
+                let points = [];
+                
+                const majorAxis = 250; 
+                const minorAxis = 100; 
+                let angle = -Math.PI / 4; 
+
+                class DataPoint {
+                    constructor() { this.reset(); }
+
+                    reset() {
+                        this.x = (Math.random() * canvasSim.width);
+                        this.y = (Math.random() * canvasSim.height);
+                        this.vx = (Math.random() - 0.5) * 0.5;
+                        this.vy = (Math.random() - 0.5) * 0.5;
+                        this.isAnomaly = false;
+                    }
+
+                    update() {
+                        this.x += this.vx; this.y += this.vy;
+                        if (this.x < 0 || this.x > canvasSim.width) this.vx *= -1;
+                        if (this.y < 0 || this.y > canvasSim.height) this.vy *= -1;
+
+                        // Pearl's Algorithm
+                        let dx = this.x - (canvasSim.width/2);
+                        let dy = this.y - (canvasSim.height/2);
+                        let rotatedX = dx * Math.cos(-angle) - dy * Math.sin(-angle);
+                        let rotatedY = dx * Math.sin(-angle) + dy * Math.cos(-angle);
+                        
+                        let distMajor = Math.abs(rotatedX);
+                        let distMinor = Math.abs(rotatedY);
+
+                        if (distMajor > majorAxis || distMinor > minorAxis) {
+                            this.isAnomaly = true;
+                        } else {
+                            let ellipseEq = (rotatedX*rotatedX)/(majorAxis*majorAxis) + (rotatedY*rotatedY)/(minorAxis*minorAxis);
+                            this.isAnomaly = ellipseEq > 1; 
+                        }
+                    }
+
+                    draw() {
+                        ctxSim.beginPath();
+                        ctxSim.arc(this.x, this.y, this.isAnomaly ? 3 : 2, 0, Math.PI * 2);
+                        if (this.isAnomaly) {
+                            ctxSim.fillStyle = '#ff3333';
+                            ctxSim.strokeStyle = 'rgba(255, 51, 51, 0.1)';
+                        } else {
+                            ctxSim.fillStyle = '#ffffff';
+                            ctxSim.strokeStyle = 'transparent';
+                        }
+                        ctxSim.fill();
+                        ctxSim.stroke();
+                    }
+                }
+
+                function initSim() {
+                    canvasSim.width = window.innerWidth;
+                    canvasSim.height = window.innerHeight;
+                    points = [];
+                    for(let i=0; i<150; i++) points.push(new DataPoint());
+                }
+
+                function drawEllipse() {
+                    const cx = canvasSim.width / 2;
+                    const cy = canvasSim.height / 2;
+                    ctxSim.save();
+                    ctxSim.translate(cx, cy);
+                    ctxSim.rotate(angle);
+                    ctxSim.beginPath();
+                    ctxSim.ellipse(0, 0, majorAxis, minorAxis, 0, 0, 2 * Math.PI);
+                    ctxSim.strokeStyle = '#d4af37';
+                    ctxSim.lineWidth = 2;
+                    ctxSim.stroke();
+                    ctxSim.restore();
+                }
+
+                function animateSim() {
+                    if (!simRunning) return;
+                    ctxSim.fillStyle = 'rgba(0, 0, 0, 0.1)';
+                    ctxSim.fillRect(0, 0, canvasSim.width, canvasSim.height);
+                    drawEllipse();
+                    let anomalies = 0;
+                    points.forEach(p => {
+                        p.update();
+                        p.draw();
+                        if(p.isAnomaly) anomalies++;
+                    });
+                    if(anomCountEl) anomCountEl.innerText = anomalies;
+                    if(totalCountEl) totalCountEl.innerText = points.length;
+                    angle += 0.002; 
+                    animationId = requestAnimationFrame(animateSim);
+                }
+
+                // EVENT LISTENERS FOR SIMULATION
+                openSimBtn.addEventListener('click', () => {
+                    simModal.classList.add('active');
+                    simRunning = true;
+                    initSim();
+                    animateSim();
+                });
+
+                closeSimBtn.addEventListener('click', () => {
+                    simModal.classList.remove('active');
+                    simRunning = false;
+                    cancelAnimationFrame(animationId);
+                });
+
+                window.addEventListener('resize', () => {
+                    if(simRunning) initSim();
+                });
+            }
+
+            /* =========================================
+               4. CONTACT & OTHER JS
+               ========================================= */
+            const contactBtn = document.getElementById('emailBtn');
+            const feedback = document.getElementById('copyMsg');
+
+            if (contactBtn) {
+                contactBtn.addEventListener('click', function() {
+                    navigator.clipboard.writeText('pearlbipin@gmail.com');
+                    if(feedback) {
+                        feedback.style.opacity = '1';
+                        setTimeout(() => feedback.style.opacity = '0', 2000);
+                    }
+                });
+            }
+            
+                        /* Refined Cursor Logic */
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorCircle = document.querySelector('.cursor-circle');
+            
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+            
+                // Direct movement for the dot
+                cursorDot.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
+                
+                // Smooth lag for the circle
+                cursorCircle.animate({
+                    transform: `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`
+                }, { duration: 500, fill: "forwards" });
+            });
+
+            // Hero Particles
+            const canvas = document.getElementById('heroCanvas');
+            if(canvas) {
+                const ctx = canvas.getContext('2d');
+                let particles = [];
+                function resizeHero() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+                window.addEventListener('resize', resizeHero);
+                resizeHero();
+
+                class Particle {
+                    constructor() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = Math.random() * canvas.height;
+                        this.vx = (Math.random() - 0.5) * 0.5;
+                        this.vy = (Math.random() - 0.5) * 0.5;
+                        this.size = Math.random() * 2;
+                    }
+                    update() {
+                        this.x += this.vx; this.y += this.vy;
+                        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                    }
+                    draw() {
+                        ctx.fillStyle = 'rgba(212, 175, 55, 0.5)';
+                        ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+                    }
+                }
+                for (let i = 0; i < 60; i++) particles.push(new Particle());
+                function animateHero() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    for (let i = 0; i < particles.length; i++) {
+                        particles[i].update(); particles[i].draw();
+                    }
+                    requestAnimationFrame(animateHero);
+                }
+                animateHero();
+            }
+
+            // Preloader
+            setTimeout(() => {
+                const loader = document.querySelector('.preloader');
+                if(loader) loader.classList.add('hidden');
+            }, 1500);
+
+        });
+        
+        /* =========================================
+   TERNARY LOGIC SIMULATION
+   ========================================= */
+const openTernaryBtn = document.getElementById('openTernaryBtn');
+const closeTernaryBtn = document.getElementById('closeTernaryBtn');
+const ternaryModal = document.getElementById('ternaryModal');
+const canvasTernary = document.getElementById('ternaryCanvas');
+
+if (openTernaryBtn && canvasTernary) {
+    const ctxT = canvasTernary.getContext('2d');
+    let tSimRunning = false;
+    let tAnimationId;
+    let packets = [];
+
+    const states = [-1, 0, 1];
+    const colors = { '-1': '#ff3333', '0': '#888888', '1': '#d4af37' };
+
+    class LogicPacket {
+        constructor() {
+            this.reset();
+            this.progress = 0; // 0 to 1
+        }
+        reset() {
+            this.inA = states[Math.floor(Math.random() * 3)];
+            this.inB = states[Math.floor(Math.random() * 3)];
+            this.output = -Math.min(this.inA, this.inB);
+            this.progress = 0;
+            this.speed = 0.005 + Math.random() * 0.005;
+        }
+        draw() {
+            const w = canvasTernary.width;
+            const h = canvasTernary.height;
+            const gateX = w / 2;
+            
+            // Draw Gate Symbol
+            ctxT.strokeStyle = '#444';
+            ctxT.lineWidth = 2;
+            ctxT.beginPath();
+            ctxT.arc(gateX, h/2, 40, -Math.PI/2, Math.PI/2);
+            ctxT.lineTo(gateX - 40, h/2 + 40);
+            ctxT.lineTo(gateX - 40, h/2 - 40);
+            ctxT.closePath();
+            ctxT.stroke();
+            // NAND Bubble
+            ctxT.beginPath();
+            ctxT.arc(gateX + 45, h/2, 5, 0, Math.PI*2);
+            ctxT.stroke();
+
+            // Animate Inputs
+            if (this.progress < 0.5) {
+                const p = this.progress * 2; // local progress for input phase
+                this.drawNode(gateX - 150 + (110 * p), h/2 - 20, this.inA);
+                this.drawNode(gateX - 150 + (110 * p), h/2 + 20, this.inB);
+            } 
+            // Animate Output
+            else {
+                const p = (this.progress - 0.5) * 2;
+                this.drawNode(gateX + 50 + (100 * p), h/2, this.output);
+            }
+            
+            this.progress += this.speed;
+            if (this.progress > 1) this.reset();
+        }
+        drawNode(x, y, val) {
+            ctxT.fillStyle = colors[val];
+            ctxT.beginPath();
+            ctxT.arc(x, y, 12, 0, Math.PI*2);
+            ctxT.fill();
+            ctxT.fillStyle = '#000';
+            ctxT.font = 'bold 12px Manrope';
+            ctxT.textAlign = 'center';
+            ctxT.fillText(val, x, y + 4);
+        }
+    }
+
+    function animateTernary() {
+        if (!tSimRunning) return;
+        ctxT.fillStyle = 'rgba(0, 0, 0, 0.2)';
+        ctxT.fillRect(0, 0, canvasTernary.width, canvasTernary.height);
+        
+        // Static labels
+        ctxT.fillStyle = '#555';
+        ctxT.font = '10px Manrope';
+        ctxT.fillText('INPUT A', canvasTernary.width/2 - 150, canvasTernary.height/2 - 40);
+        ctxT.fillText('INPUT B', canvasTernary.width/2 - 150, canvasTernary.height/2 + 50);
+        ctxT.fillText('OUTPUT (NAND)', canvasTernary.width/2 + 100, canvasTernary.height/2 - 20);
+
+        packets.forEach(p => p.draw());
+        tAnimationId = requestAnimationFrame(animateTernary);
+    }
+
+    openTernaryBtn.addEventListener('click', () => {
+        ternaryModal.classList.add('active');
+        canvasTernary.width = canvasTernary.offsetWidth;
+        canvasTernary.height = canvasTernary.offsetHeight;
+        tSimRunning = true;
+        packets = [new LogicPacket(), new LogicPacket()];
+        setTimeout(() => packets.push(new LogicPacket()), 1500);
+        animateTernary();
+    });
+
+    closeTernaryBtn.addEventListener('click', () => {
+        ternaryModal.classList.remove('active');
+        tSimRunning = false;
+        cancelAnimationFrame(tAnimationId);
+    });
+}
+
+/* =========================================
+   IMAGINARY LOGIC SIMULATION (Quad-State)
+   ========================================= */
+const openImagBtn = document.getElementById('openImaginaryBtn');
+const closeImagBtn = document.getElementById('closeImaginaryBtn');
+const imagModal = document.getElementById('imaginaryModal');
+const canvasImag = document.getElementById('imaginaryCanvas');
+
+if (openImagBtn && canvasImag) {
+    const ctxI = canvasImag.getContext('2d');
+    let iSimRunning = false;
+    let iAnimationId;
+    let iPackets = [];
+
+    // Defining the 4 states and their aesthetic representation
+    const iStates = [-1, 0, 1, 'i'];
+    const iColors = { 
+        '-1': '#ff3333', // Red (Cold/Low)
+        '0': '#888888',  // Grey (Neutral)
+        '1': '#d4af37',  // Gold (Hot/High)
+        'i': '#00ffff'   // Cyan (Absolute Zero/AC Pulse)
+    };
+
+    class ImaginaryPacket {
+        constructor() {
+            this.reset();
+        }
+        reset() {
+            this.inA = iStates[Math.floor(Math.random() * 4)];
+            this.inB = iStates[Math.floor(Math.random() * 4)];
+            this.output = this.calculateNAND(this.inA, this.inB);
+            this.progress = 0;
+            this.speed = 0.004 + Math.random() * 0.003;
+        }
+
+        // Truth Table Logic from the research paper 
+        calculateNAND(a, b) {
+            if (a === -1 || b === -1) return 1; // High if any input is low 
+            if (a === 0 || b === 0) return 0;   // Neutral if any input is neutral and no low input 
+            if (a === 'i' && b === 'i') return 'i'; // Imaginary if both are imaginary 
+            // Output is -1 if both are 1, OR if one is 1 and the other is i 
+            if ((a === 1 || a === 'i') && (b === 1 || b === 'i')) return -1;
+            return 1;
+        }
+
+        draw() {
+            const w = canvasImag.width;
+            const h = canvasImag.height;
+            const gateX = w / 2;
+            
+            // Draw i-NAND Gate Symbol
+            ctxI.strokeStyle = '#d4af37';
+            ctxI.lineWidth = 1;
+            ctxI.setLineDash([5, 5]); // Dashed line to represent "Imaginary" boundary
+            ctxI.beginPath();
+            ctxI.arc(gateX, h/2, 45, -Math.PI/2, Math.PI/2);
+            ctxI.lineTo(gateX - 45, h/2 + 45);
+            ctxI.lineTo(gateX - 45, h/2 - 45);
+            ctxI.closePath();
+            ctxI.stroke();
+            ctxI.setLineDash([]); // Reset dash
+
+            // NAND Bubble
+            ctxI.beginPath(); ctxI.arc(gateX + 50, h/2, 6, 0, Math.PI*2); ctxI.stroke();
+
+            if (this.progress < 0.5) {
+                const p = this.progress * 2;
+                this.drawNode(gateX - 180 + (130 * p), h/2 - 25, this.inA);
+                this.drawNode(gateX - 180 + (130 * p), h/2 + 25, this.inB);
+            } else {
+                const p = (this.progress - 0.5) * 2;
+                this.drawNode(gateX + 60 + (120 * p), h/2, this.output);
+            }
+            
+            this.progress += this.speed;
+            if (this.progress > 1) this.reset();
+        }
+
+        drawNode(x, y, val) {
+            ctxI.fillStyle = iColors[val];
+            ctxI.shadowBlur = val === 'i' ? 15 : 0; // Glow effect for imaginary state
+            ctxI.shadowColor = iColors['i'];
+            ctxI.beginPath(); ctxI.arc(x, y, 14, 0, Math.PI*2); ctxI.fill();
+            ctxI.shadowBlur = 0;
+            ctxI.fillStyle = '#000';
+            ctxI.font = 'bold 12px Manrope';
+            ctxI.textAlign = 'center';
+            ctxI.fillText(val, x, y + 4);
+        }
+    }
+
+    function animateImaginary() {
+        if (!iSimRunning) return;
+        ctxI.fillStyle = 'rgba(5, 5, 5, 0.15)';
+        ctxI.fillRect(0, 0, canvasImag.width, canvasImag.height);
+        iPackets.forEach(p => p.draw());
+        iAnimationId = requestAnimationFrame(animateImaginary);
+    }
+
+    openImagBtn.addEventListener('click', () => {
+        imagModal.classList.add('active');
+        canvasImag.width = canvasImag.offsetWidth;
+        canvasImag.height = canvasImag.offsetHeight;
+        iSimRunning = true;
+        iPackets = [new ImaginaryPacket(), new ImaginaryPacket(), new ImaginaryPacket()];
+        animateImaginary();
+    });
+
+    closeImagBtn.addEventListener('click', () => {
+        imagModal.classList.remove('active');
+        iSimRunning = false;
+        cancelAnimationFrame(iAnimationId);
+    });
+}
+
+/* =========================================
+   PI IDENTITY SIMULATION (Complex Analysis)
+   ========================================= */
+const openPiBtn = document.getElementById('openPiBtn');
+const closePiBtn = document.getElementById('closePiBtn');
+const piModal = document.getElementById('piModal');
+const canvasPi = document.getElementById('piCanvas');
+
+if (openPiBtn && canvasPi) {
+    const ctxP = canvasPi.getContext('2d');
+    let piSimRunning = false;
+    let piAnimationId;
+    let angle = 0;
+    const targetAngle = Math.PI / 2; // The angle for 'i'
+
+    function drawComplexPlane() {
+        const w = canvasPi.width;
+        const h = canvasPi.height;
+        const centerX = w / 2;
+        const centerY = h / 2;
+        const scale = Math.min(w, h) * 0.35;
+
+        ctxP.clearRect(0, 0, w, h);
+
+        // Draw Grid
+        ctxP.strokeStyle = '#1a1a1a';
+        ctxP.lineWidth = 1;
+        for(let i = -5; i <= 5; i++) {
+            ctxP.beginPath(); ctxP.moveTo(centerX + i*scale/2, 0); ctxP.lineTo(centerX + i*scale/2, h); ctxP.stroke();
+            ctxP.beginPath(); ctxP.moveTo(0, centerY + i*scale/2); ctxP.lineTo(w, centerY + i*scale/2); ctxP.stroke();
+        }
+
+        // Draw Axes
+        ctxP.strokeStyle = '#444';
+        ctxP.lineWidth = 2;
+        ctxP.beginPath(); ctxP.moveTo(0, centerY); ctxP.lineTo(w, centerY); ctxP.stroke();
+        ctxP.beginPath(); ctxP.moveTo(centerX, 0); ctxP.lineTo(centerX, h); ctxP.stroke();
+
+        // Unit Circle
+        ctxP.strokeStyle = '#222';
+        ctxP.beginPath(); ctxP.arc(centerX, centerY, scale, 0, Math.PI*2); ctxP.stroke();
+
+        // Draw Arc for ln(i)
+        ctxP.strokeStyle = 'var(--gold-flat)';
+        ctxP.lineWidth = 3;
+        ctxP.beginPath();
+        ctxP.arc(centerX, centerY, scale, 0, -angle, true);
+        ctxP.stroke();
+
+        // Moving Point (The phasor)
+        const px = centerX + scale * Math.cos(-angle);
+        const py = centerY + scale * Math.sin(-angle);
+        
+        ctxP.fillStyle = 'var(--gold-flat)';
+        ctxP.shadowBlur = 15; ctxP.shadowColor = 'var(--gold-flat)';
+        ctxP.beginPath(); ctxP.arc(px, py, 8, 0, Math.PI*2); ctxP.fill();
+        ctxP.shadowBlur = 0;
+
+        // Labels
+        ctxP.fillStyle = '#fff';
+        ctxP.font = '12px Manrope';
+        ctxP.fillText("Re (1)", centerX + scale + 10, centerY + 20);
+        ctxP.fillText("Im (i)", centerX - 30, centerY - scale - 10);
+        
+        // Formula Update Overlay
+        ctxP.fillStyle = 'rgba(15, 15, 15, 0.8)';
+        ctxP.fillRect(20, 20, 240, 80);
+        ctxP.strokeStyle = '#d4af37';
+        ctxP.strokeRect(20, 20, 240, 80);
+        
+        ctxP.fillStyle = '#d4af37';
+        ctxP.font = '16px serif';
+        ctxP.fillText(`Angle θ = ${(angle).toFixed(3)} rad`, 40, 50);
+        ctxP.fillStyle = '#fff';
+        ctxP.font = '14px serif';
+        const currentPiEst = angle * 2;
+        ctxP.fillText(`Current 2θ ≈ ${currentPiEst.toFixed(4)}`, 40, 75);
+    }
+
+    function animatePi() {
+        if (!piSimRunning) return;
+        
+        // Oscillate or progress toward pi/2
+        angle += (targetAngle - angle) * 0.02;
+        if (Math.abs(targetAngle - angle) < 0.001) {
+            setTimeout(() => { angle = 0; }, 2000); // Reset after pause
+        }
+
+        drawComplexPlane();
+        piAnimationId = requestAnimationFrame(animatePi);
+    }
+
+    openPiBtn.addEventListener('click', () => {
+        piModal.classList.add('active');
+        canvasPi.width = canvasPi.offsetWidth;
+        canvasPi.height = canvasPi.offsetHeight;
+        piSimRunning = true;
+        angle = 0;
+        animatePi();
+    });
+
+    closePiBtn.addEventListener('click', () => {
+        piModal.classList.remove('active');
+        piSimRunning = false;
+        cancelAnimationFrame(piAnimationId);
+    });
+}
+
+/* =========================================
+   COMPLEX OBSERVER: 2-CYCLE DYNAMICS
+   ========================================= */
+const openObsBtn = document.getElementById('openObserverBtn');
+const closeObsBtn = document.getElementById('observerModal').querySelector('.close-sim'); 
+const obsModal = document.getElementById('observerModal');
+const canvasO = document.getElementById('observerCanvas');
+
+if (openObsBtn && canvasO) {
+    const ctxO = canvasO.getContext('2d');
+    let obsRunning = false;
+    let obsAnimationId; // Store the ID for stopping the loop
+    let nVal = 3;
+    let zState = { r: 2.2, theta: 0.8 };
+    let obsPath = [];
+    let cycleFrame = 0;
+
+    function drawCoordinateSystem(cx, cy, scale) {
+        ctxO.strokeStyle = '#111';
+        ctxO.lineWidth = 1;
+        ctxO.fillStyle = '#444';
+        ctxO.font = '10px Manrope';
+
+        // Grid Lines and Labels
+        for(let i = -3; i <= 3; i += 0.5) {
+            ctxO.beginPath(); ctxO.moveTo(cx + i * scale, 0); ctxO.lineTo(cx + i * scale, canvasO.height); ctxO.stroke();
+            if(i !== 0) ctxO.fillText(i.toFixed(1), cx + i * scale - 10, cy + 15);
+            ctxO.beginPath(); ctxO.moveTo(0, cy - i * scale); ctxO.lineTo(canvasO.width, cy - i * scale); ctxO.stroke();
+            if(i !== 0) ctxO.fillText(i.toFixed(1) + "i", cx + 5, cy - i * scale + 3);
+        }
+
+        // Main Axes
+        ctxO.strokeStyle = '#222';
+        ctxO.lineWidth = 2;
+        ctxO.beginPath(); ctxO.moveTo(0, cy); ctxO.lineTo(canvasO.width, cy); ctxO.stroke();
+        ctxO.beginPath(); ctxO.moveTo(cx, 0); ctxO.lineTo(cx, canvasO.height); ctxO.stroke();
+
+        // ------------------------------------------------------------
+        // CRITICAL ADDITION: THE UNIT CIRCLE (MODULUS ATTRACTOR)
+        // ------------------------------------------------------------
+        ctxO.strokeStyle = 'rgba(212, 175, 55, 0.4)'; 
+        ctxO.lineWidth = 1.5;
+        ctxO.setLineDash([5, 10]); 
+        ctxO.beginPath();
+        ctxO.arc(cx, cy, scale, 0, Math.PI * 2);
+        ctxO.stroke();
+        ctxO.setLineDash([]); 
+
+        // Branch Cut Visualization (Negative Real Axis)
+        const grad = ctxO.createLinearGradient(cx - scale * 3, cy, cx, cy);
+        grad.addColorStop(0, 'rgba(255, 51, 51, 0)'); grad.addColorStop(1, 'rgba(255, 51, 51, 0.3)');
+        ctxO.strokeStyle = grad; ctxO.lineWidth = 4;
+        ctxO.beginPath(); ctxO.moveTo(cx, cy); ctxO.lineTo(cx - scale * 3, cy); ctxO.stroke();
+    }
+
+    function runObservation() {
+        if (!obsRunning) return;
+
+        const w = canvasO.width, h = canvasO.height;
+        const cx = w / 2, cy = h / 2, scale = 160;
+
+        ctxO.fillStyle = 'rgba(0, 0, 0, 0.08)';
+        ctxO.fillRect(0, 0, w, h);
+
+        drawCoordinateSystem(cx, cy, scale);
+
+        // Pearl's Mathematical Recurrence Logic
+        if (cycleFrame % 6 === 0) {
+            zState.r = Math.pow(zState.r, 1/nVal); 
+            zState.theta = (zState.theta <= 0) ? (zState.theta + Math.PI) / nVal : (zState.theta - Math.PI) / nVal;
+
+            obsPath.push({x: cx + (zState.r * scale) * Math.cos(zState.theta), 
+                          y: cy - (zState.r * scale) * Math.sin(zState.theta)});
+            if (obsPath.length > 60) obsPath.shift();
+
+            document.getElementById('tele-theta').innerText = `${zState.theta.toFixed(4)} rad`;
+        }
+
+        if (obsPath.length > 1) {
+            ctxO.beginPath();
+            ctxO.strokeStyle = 'rgba(212, 175, 55, 0.5)';
+            ctxO.lineWidth = 1.2;
+            ctxO.moveTo(obsPath[0].x, obsPath[0].y);
+            for(let i = 1; i < obsPath.length; i++) ctxO.lineTo(obsPath[i].x, obsPath[i].y);
+            ctxO.stroke();
+        }
+
+        const last = obsPath[obsPath.length - 1];
+        if (last) {
+            ctxO.fillStyle = '#d4af37';
+            ctxO.shadowBlur = 15; ctxO.shadowColor = '#d4af37';
+            ctxO.beginPath(); ctxO.arc(last.x, last.y, 5, 0, Math.PI * 2); ctxO.fill();
+            ctxO.shadowBlur = 0;
+        }
+
+        cycleFrame++;
+        if (cycleFrame > 480) {
+            cycleFrame = 0;
+            nVal = (nVal >= 10) ? 2 : nVal + 1;
+            document.getElementById('tele-n').innerText = nVal;
+            document.getElementById('tele-limits').innerText = `±${(Math.PI/(nVal+1)).toFixed(4)} rad`;
+            zState = { r: 2.5, theta: Math.random() * Math.PI };
+            obsPath = [];
+            ctxO.clearRect(0,0,w,h);
+        }
+
+        obsAnimationId = requestAnimationFrame(runObservation);
+    }
+
+    // Controls Logic
+    openObsBtn.addEventListener('click', () => {
+        obsModal.classList.add('active');
+        canvasO.width = canvasO.offsetWidth; canvasO.height = canvasO.offsetHeight;
+        obsRunning = true;
+        runObservation();
+    });
+
+    closeObsBtn.addEventListener('click', () => {
+        obsModal.classList.remove('active');
+        obsRunning = false;
+        cancelAnimationFrame(obsAnimationId);
+        obsPath = [];
+    });
+}
+    </script>
